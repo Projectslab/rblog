@@ -15,6 +15,6 @@
 
   (timbre/set-config!
     [:shared-appender-config :rotor]
-    {:path "rblog.log" :max-size (* 512 1024) :backlog 10}))
+    {:path "log/rblog.log" :max-size (* 512 1024) :backlog 10}))
 
 (defn info [mess] (timbre/info mess))
