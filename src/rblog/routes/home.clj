@@ -4,11 +4,10 @@
             [rblog.util :as util]))
 
 (defn home-page []
-  (layout/render
-    "home.html" {:content (util/md->html "/md/docs.md")}))
+  (layout/render :home)) ; {:content (util/md->html "/md/docs.md")}))
 
 (defn about-page []
-  (layout/render "about.html"))
+  (layout/render :about))
 
 (defroutes home-routes
   (GET "/" [] (home-page))
