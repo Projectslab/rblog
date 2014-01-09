@@ -3,6 +3,8 @@
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to rblog</title>
+        {% style "/assets/bootstrap/dist/css/bootstrap.min.css" %}
+        {% style "/css/app.css" %}
     </head>
     <body>
         <!-- navbar -->
@@ -25,11 +27,9 @@
             {% endblock %}
         </div>
         <!-- scripts and styles -->
-        {% style "/css/bootstrap-theme.min.css" %}
-        {% style "/css/bootstrap.min.css" %}
-        {% style "/css/screen.css" %}
-        <script src="//code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
         {% script "/js/bootstrap.min.js" %}
+        {% script "/assets/jquery/jquery.min.js" %}
+        {% script "/assets/bootstrap/dist/js/bootstrap.min.js" %}
         <script type="text/javascript">
             var context = "{{servlet-context}}";
         </script>

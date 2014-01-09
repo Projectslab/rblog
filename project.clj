@@ -17,7 +17,10 @@
             [lein-environ "0.4.0"]]
   :ring {:handler rblog.handler/app
          :init    rblog.handler/init
-         :destroy rblog.handler/destroy}
+         :destroy rblog.handler/destroy
+         :auto-reload? true
+         :auto-refresh? true
+         :nrepl {:start? true :port 5555}}
   :profiles
   {:production {:ring {:open-browser? false
                        :stacktraces?  false

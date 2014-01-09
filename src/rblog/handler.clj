@@ -1,10 +1,9 @@
-(ns rblog.handler  
-  (:require [compojure.core :refer [defroutes]]            
+(ns rblog.handler
+  (:require [compojure.core :refer [defroutes]]
             [rblog.routes.home :refer [home-routes]]
             [noir.util.middleware :as middleware]
             [compojure.route :as route]
-            [taoensso.timbre :as timbre]
-            [com.postspectacular.rotor :as rotor]
+            [rblog.logger :as log]
             [selmer.parser :as parser]
             [environ.core :refer [env]]))
 
@@ -14,30 +13,19 @@
 
 (defn init
   "init will be called once when
-   app is deployed as a servlet on
-   an app server such as Tomcat
-   put any initialization code here"
+  app is deployed as a servlet on
+  an app server such as Tomcat
+  put any initialization code here"
   []
-  (timbre/set-config!
-    [:appenders :rotor]
-    {:min-level :info
-     :enabled? true
-     :async? false ; should be always false for rotor
-     :max-message-per-msecs nil
-     :fn rotor/append})
-
-  (timbre/set-config!
-    [:shared-appender-config :rotor]
-    {:path "rblog.log" :max-size (* 512 1024) :backlog 10})
-
+  (log/configure-logger!)
   (if (env :selmer-dev) (parser/cache-off!))
-  (timbre/info "rblog started successfully"))
+  (log/info "rblog started successfully"))
 
 (defn destroy
   "destroy will be called when your application
-   shuts down, put any clean up code here"
+  shuts down, put any clean up code here"
   []
-  (timbre/info "rblog is shutting down..."))
+  (log/info "rblog is shutting down..."))
 
 (defn template-error-page [handler]
   (if (env :selmer-dev)

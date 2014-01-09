@@ -1,0 +1,19 @@
+{
+  "name": "rblog",
+  "version": "0.0.0",
+  "authors": [
+    "niquola <niquola@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "3.0.0",
+    "jquery": "1.10.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
